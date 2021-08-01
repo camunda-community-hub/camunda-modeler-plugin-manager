@@ -83,9 +83,11 @@ I used mostly these two places that give you a great overview of them:
 * [Camunda Modeler Best Plugins List](https://github.com/NPDeehan/Camunda-Modeler-Best-Plugins-List)
   by Niall
 
+Make sure to restart the Modeler, that the plugins get recognized by the Modeler.
+
 ### Install the Script Plugin
 There is a special plugin that is huge - at least in memory (>200MB).
-So I wanted not include this with the others.
+So I didn't want this to be included with the others.
 
 I actually did not get it running - at least that is how it looks.
 
@@ -94,7 +96,7 @@ amm modeler-setup.sc scriptPlugin <plugin-version>
 ```
 At the time of writing this is `0.3.0`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
 
-### There is a cool Plugin missing
+### Is there a cool Plugin missing?
 Please let me know! Create a PR or an Issue!
 ### I don't like all Plugins 
 No problem just delete them and comment them out directly in the `modeler-setup.sc` script.

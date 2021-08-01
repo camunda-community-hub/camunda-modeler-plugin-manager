@@ -2,13 +2,7 @@ import ammonite.ops._
 import java.io.File
 
 /**
- * <pre>
- * Gets and updates the Plugins of https://github.com/datakurre/camunda-cockpit-plugins/.
- *
- * This uses Ammonite - see http://ammonite.io
- *
- * amm ./update-plugin.sc
- *
+ * See the README.md!
  */
 
 private implicit val workDir: Path = {
