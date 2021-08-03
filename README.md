@@ -9,10 +9,9 @@ _/        _/    _/  _/    _/    _/  _/    _/  _/    _/  _/    _/  _/    _/  _/  
 ```
 ## Camunda Modeler Setup Manager (on a Mac)
 This project helps you with the tasks to setup the Camunda Modeler.
-* Install the Modeler.
-* Install useful Plugins.
-* Install the Script Plugin (extra Task as it is huge😳)
-
+* Install/ Update the Modeler.
+* Install/ Update useful Plugins.
+* Installl/ Update the Script Plugin (extra Task as it is huge😳)
 ## Requirements
 This is done with an [Ammonite](http://ammonite.io) script for a MAC.
 
