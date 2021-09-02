@@ -60,6 +60,11 @@ It should actually be quite simple to rewrite the script so that it works with W
 > If you do so please create a PR and I will add it to this project.
 
 ## How to use
+### Clone this Project
+```sh
+git clone https://github.com/camunda-community-hub/camunda-modeler-plugin-manager.git
+cd camunda-modeler-plugin-manager
+```
 ### Install the modeler
 Make sure you quite the existing Modeler!
 ```scala
