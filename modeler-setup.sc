@@ -96,13 +96,13 @@ def plugins(): Unit = {
 
 }
 
-@arg(doc = "> Install Script Plugin on a Mac - this takes some time (>200MB!)")
+@arg(doc = "> Install Script Plugin on a Mac.")
 @main
 def scriptPlugin(@arg(doc = "Version of the Script Plugin")
             scriptPluginVersion: String): Unit = {
 
   val scriptPlugin = "camunda-code-editor-plugin"
-  val zipFile = s"$scriptPlugin-linux-x64.tar.gz"
+  val zipFile = s"$scriptPlugin.tar.gz"
   val scriptPluginPath = s"https://github.com/sharedchains/camunda-code-editor/releases/download/v$scriptPluginVersion/$zipFile"
   %.curl("-LO", scriptPluginPath)
   deleteExisting(scriptPlugin)

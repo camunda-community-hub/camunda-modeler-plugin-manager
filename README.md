@@ -11,7 +11,7 @@ _/        _/    _/  _/    _/    _/  _/    _/  _/    _/  _/    _/  _/    _/  _/  
 This project helps you with the tasks to setup the Camunda Modeler.
 * Install/ Update the Modeler.
 * Install/ Update useful Plugins.
-* Installl/ Update the Script Plugin (extra Task as it is huge😳)
+* Install/ Update the Script Plugin (extra Task as it will change your Script Editor😳)
 ## Requirements
 This is done with an [Ammonite](http://ammonite.io) script for a MAC.
 
@@ -93,13 +93,13 @@ Make sure to restart the Modeler, that the plugins get recognized by the Modeler
 There is a special plugin that is huge - at least in memory (>200MB).
 So I didn't want this to be included with the others.
 
-> **Warning** on a Mac you need to replace the provided JVM with one installed on your Mac.
+> **Warning** it seems that JAVA_HOME must point to `/usr/bin/java` distribution - otherwise you cannot execute the scripts.
 > At the moment I think the state is experimental - but definitely give it a try - 
 > this could become a real star of the modeler plugins🤓.
 ```scala
 amm modeler-setup.sc scriptPlugin <plugin-version> 
 ```
-At the time of writing this is `0.3.1`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
+At the time of writing this is `0.4.0`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
 
 ### Is there a cool Plugin missing?
 Please let me know! Create a PR or an Issue!
