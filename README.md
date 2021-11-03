@@ -99,7 +99,7 @@ So I didn't want this to be included with the others.
 ```scala
 amm modeler-setup.sc scriptPlugin <plugin-version> 
 ```
-At the time of writing this is `0.4.0`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
+At the time of writing this is `0.5.0`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
 
 ### Is there a cool Plugin missing?
 Please let me know! Create a PR or an Issue!
