@@ -90,10 +90,9 @@ I used mostly these two places that give you a great overview of them:
 Make sure to restart the Modeler, that the plugins get recognized by the Modeler.
 
 ### Install the Script Plugin
-There is a special plugin that is huge - at least in memory (>200MB).
+There is a special plugin that replaces the Script Editor. It also needs the Version Number.
 So I didn't want this to be included with the others.
 
-> **Warning** it seems that JAVA_HOME must point to `/usr/bin/java` distribution - otherwise you cannot execute the scripts.
 > At the moment I think the state is experimental - but definitely give it a try - 
 > this could become a real star of the modeler plugins🤓.
 ```scala
