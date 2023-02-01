@@ -89,7 +89,10 @@ I used mostly these two places that give you a great overview of them:
 
 Make sure to restart the Modeler, that the plugins get recognized by the Modeler.
 
-### Install the Script Plugin
+## Install more specific Plugins
+Plugins that you can, but not need.
+
+### Script Plugin
 There is a special plugin that replaces the Script Editor. It also needs the Version Number.
 So I didn't want this to be included with the others.
 
@@ -99,6 +102,15 @@ So I didn't want this to be included with the others.
 amm modeler-setup.sc scriptPlugin <plugin-version> 
 ```
 At the time of writing this is `0.5.0`. See [Plugin Download](https://github.com/sharedchains/camunda-code-editor/releases) for the actual version.
+
+### BPMN models from Camunda 7 to Camunda 8 Plugin
+This modeler plugin can convert BPMN models that were created for Camunda Platform into models can be executed on Camunda Cloud.
+
+> See the [Documentation](https://github.com/camunda-community-hub/camunda-7-to-8-migration/tree/main/modeler-plugin-7-to-8-converter).
+```scala
+amm modeler-setup.sc migratePlugin <plugin-version> 
+```
+At the time of writing this is `0.4.3`. See [Plugin Download](https://github.com/camunda-community-hub/camunda-7-to-8-migration/releases) for the actual version.
 
 ### Is there a cool Plugin missing?
 Please let me know! Create a PR or an Issue!

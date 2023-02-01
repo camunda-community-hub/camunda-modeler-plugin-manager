@@ -1,29 +1,26 @@
-import ammonite.ops._
 import java.io.File
 
 /**
  * See the README.md!
  */
 
-private implicit val workDir: Path = {
-  val wd = pwd
+private implicit val workDir: os.Path = {
+  val wd = os.pwd
   println(s"Working Directory: $wd")
   wd
 }
-private val pluginPath = root / "Users" / "mpa" / "Library" / "Application Support" / "camunda-modeler" / "plugins"
+private val pluginPath = os.root / "Users" / "mpa" / "Library" / "Application Support" / "camunda-modeler" / "plugins"
 
 private def deleteExisting(pluginName: String) = {
   if (new File((pluginPath / pluginName).toString).exists()) {
-    rm ! pluginPath / pluginName
+    println(os.proc("rm", "-r", pluginPath / pluginName).call())
   }
 }
 private def addOrReplacePlugin(pluginName: String, cloneUrl: String) = {
   deleteExisting(pluginName)
-  %.git(
-    "clone",
+  println(os.proc("git", "clone",
     cloneUrl,
-    pluginPath / pluginName
-  )
+    pluginPath / pluginName).call())
 }
 
 @arg(doc = "> Install Modeler on a Mac")
@@ -32,15 +29,14 @@ def modeler(@arg(doc = "Version of the CamundaModeler")
           modelerVersion: String): Unit = {
 
     val zipFile = s"camunda-modeler-$modelerVersion-mac.zip"
-    val applicationPath = root / "Applications"
+    val applicationPath = os.root / "Applications"
     val modelerPath = s"https://downloads.camunda.cloud/release/camunda-modeler/$modelerVersion/$zipFile"
-    %.curl("-LO", modelerPath)
+    println(os.proc("curl", "-LO", modelerPath).call())
     if (new File(applicationPath.toString).exists()) {
-      rm ! applicationPath / "Camunda Modeler.app"
+      println(os.proc("rm", "-r", applicationPath / "Camunda Modeler.app").call())
     }
-    %.unzip(zipFile, "-d", applicationPath)
-    rm ! workDir / zipFile
-
+    println(os.proc("unzip", zipFile, "-d", applicationPath).call())
+    println(os.proc("rm", workDir / zipFile).call())
 }
 
 @arg(doc = "> Install the modeler plugins on a Mac")
@@ -75,10 +71,10 @@ def plugins(): Unit = {
   // only camunda-transaction-boundaries-plugin needed
   val transactionPlugin = "camunda-transaction-boundaries-plugin"
   if (new File((pluginPath / transactionPlugin).toString).exists()) {
-    rm ! pluginPath / transactionPlugin
+    println(os.proc("rm", "-r", pluginPath / transactionPlugin).call())
   }
-  %.mv(pluginPath / camundaPlugins / transactionPlugin, pluginPath)
-  rm ! pluginPath / camundaPlugins
+  println(os.proc("mv", pluginPath / camundaPlugins / transactionPlugin, pluginPath).call())
+  println(os.proc("rm", "-r", pluginPath / camundaPlugins).call())
 
   val camundaConsultantPlugins = "code"
   addOrReplacePlugin(
@@ -87,13 +83,11 @@ def plugins(): Unit = {
   )
   val technicalIdsPlugin = "bpmn-js-plugin-rename-technical-ids"
   deleteExisting(technicalIdsPlugin)
-  %.mv(pluginPath / camundaConsultantPlugins / "snippets" / "camunda-modeler-plugins" / technicalIdsPlugin, pluginPath)
+  println(os.proc("mv", pluginPath / camundaConsultantPlugins / "snippets" / "camunda-modeler-plugins" / technicalIdsPlugin, pluginPath).call())
   val colorPickerPlugin = "bpmn-js-plugin-color-picker"
   deleteExisting(colorPickerPlugin)
-  %.mv(pluginPath / camundaConsultantPlugins / "snippets" / "camunda-modeler-plugins" / colorPickerPlugin, pluginPath)
-
-  rm ! pluginPath / camundaConsultantPlugins
-
+  //%.mv(pluginPath / camundaConsultantPlugins / "snippets" / "camunda-modeler-plugins" / colorPickerPlugin, pluginPath)
+  println(os.proc("rm", "-r", pluginPath / camundaConsultantPlugins).call())
 }
 
 @arg(doc = "> Install Script Plugin on a Mac.")
@@ -104,10 +98,24 @@ def scriptPlugin(@arg(doc = "Version of the Script Plugin")
   val scriptPlugin = "camunda-code-editor-plugin"
   val zipFile = s"$scriptPlugin.tar.gz"
   val scriptPluginPath = s"https://github.com/sharedchains/camunda-code-editor/releases/download/v$scriptPluginVersion/$zipFile"
-  %.curl("-LO", scriptPluginPath)
+  println(os.proc("curl", "-LO", scriptPluginPath).call())
   deleteExisting(scriptPlugin)
-  %%.tar("-xzf", zipFile, "-C", pluginPath)
+  println(os.proc("tar", "-xzf", zipFile, "-C", pluginPath).call())
+  println(os.proc("rm", workDir / zipFile).call())
+}
 
-  rm ! workDir / zipFile
+@arg(doc = "> Install Plugin 'BPMN models from Camunda 7 to Camunda 8' on a Mac.")
+@main
+def migratePlugin(@arg(doc = "Version of the Plugin")
+                 pluginVersion: String): Unit = {
+
+  val scriptPlugin = "modeler-plugin-7-to-8-converter"
+  val zipFile = s"$scriptPlugin.zip"
+  val scriptPluginPath = s"https://github.com/camunda-community-hub/camunda-7-to-8-migration/releases/download/$pluginVersion/$zipFile"
+  println(s"scriptPluginPath: $scriptPluginPath")
+  println(os.proc("curl", "-LO", scriptPluginPath).call())
+  deleteExisting(scriptPlugin)
+  println(os.proc("tar", "-xzf", zipFile, "-C", pluginPath).call())
+  println(os.proc("rm", workDir / zipFile).call())
 
 }
