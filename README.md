@@ -9,6 +9,9 @@ _/        _/    _/  _/    _/    _/  _/    _/  _/    _/  _/    _/  _/    _/  _/  
 ```
 ## Camunda Modeler Setup Manager (on a Mac)
 This project helps you with the tasks to setup the Camunda Modeler.
+
+Tested for Camunda 5.7
+
 * Install/ Update the Modeler.
 * Install/ Update useful Plugins.
 * Install/ Update the Script Plugin (extra Task as it will change your Script Editor😳)

@@ -48,8 +48,8 @@ def plugins(): Unit = {
     "https://github.com/viadee/camunda-modeler-tooltip-plugin.git"
   )
   addOrReplacePlugin(
-    "camunda-modeler-linter-plugin",
-    "https://github.com/camunda/camunda-modeler-linter-plugin.git"
+    "camunda-modeler-linter-default-rules",
+    "https://github.com/jonathanlukas/camunda-modeler-linter-default-rules.git"
   )
   addOrReplacePlugin(
     "bpmn-js-token-simulation-plugin",
