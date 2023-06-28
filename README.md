@@ -73,7 +73,7 @@ Make sure you quite the existing Modeler!
 ```scala
 amm modeler-setup.sc modeler <modeler-version> 
 ```
-At the time of writing this is `4.9.0`. See [Modeler Download](https://camunda.com/download/modeler/) for the actual version.
+At the time of writing this is `5.12.0`. See [Modeler Download](https://camunda.com/download/modeler/) for the actual version.
 
 Start the Camunda Modeler.
 ### Install the plugins
