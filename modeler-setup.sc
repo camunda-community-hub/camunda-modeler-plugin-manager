@@ -28,11 +28,12 @@ private def addOrReplacePlugin(pluginName: String, cloneUrl: String) = {
 def modeler(@arg(doc = "Version of the CamundaModeler")
           modelerVersion: String): Unit = {
 
-    val zipFile = s"camunda-modeler-$modelerVersion-mac.zip"
+    val zipFile = s"camunda-modeler-$modelerVersion-mac-x64.zip"
     val applicationPath = os.root / "Applications"
     val modelerPath = s"https://downloads.camunda.cloud/release/camunda-modeler/$modelerVersion/$zipFile"
+    println(s"Download Path: $modelerPath")
     println(os.proc("curl", "-LO", modelerPath).call())
-    if (new File(applicationPath.toString).exists()) {
+    if (new File((applicationPath / "Camunda Modeler.app").toString).exists()) {
       println(os.proc("rm", "-r", applicationPath / "Camunda Modeler.app").call())
     }
     println(os.proc("unzip", zipFile, "-d", applicationPath).call())
