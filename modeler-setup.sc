@@ -9,7 +9,8 @@ private implicit val workDir: os.Path = {
   println(s"Working Directory: $wd")
   wd
 }
-private val pluginPath = os.root / "Users" / "mpa" / "Library" / "Application Support" / "camunda-modeler" / "plugins"
+val homeDir = sys.env("HOME")
+private val pluginPath = os.Path(homeDir) / "Library" / "Application Support" / "camunda-modeler" / "plugins"
 
 private def deleteExisting(pluginName: String) = {
   if (new File((pluginPath / pluginName).toString).exists()) {
